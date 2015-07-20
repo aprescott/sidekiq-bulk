@@ -1,5 +1,3 @@
-puts Sidekiq::VERSION
-
 module SidekiqBulk
   def push_bulk(items, &block)
     if block
