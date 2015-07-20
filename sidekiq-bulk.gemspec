@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = "sidekiq-bulk"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.authors      = ["Adam Prescott"]
   s.email        = ["adam@aprescott.com"]
   s.homepage     = "https://github.com/aprescott/sidekiq-bulk"
