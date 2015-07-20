@@ -12,4 +12,4 @@ module SidekiqBulk
   end
 end
 
-Sidekiq::Worker::ClassMethods.include SidekiqBulk
+Sidekiq::Worker::ClassMethods.module_eval { include SidekiqBulk }
