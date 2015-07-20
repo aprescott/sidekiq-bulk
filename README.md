@@ -8,7 +8,7 @@ Augments Sidekiq job classes with a `push_bulk` method for easier bulk pushing.
 
 Sidekiq comes with `Sidekiq::Client.push_bulk` which can be faster than `perform_async` if you have lots and lots of jobs to enqueue.
 
-This gem provides a wrapper around it so that instead of
+This gem provides a wrapper around `Sidekiq::Client.push_bulk` so that instead of
 
 ```ruby
 Sidekiq::Client.push_bulk("class" => FooJob, "args" => [[1], [2], [3])
@@ -35,10 +35,19 @@ Either `require "sidekiq-bulk"` or `require "sidekiq/bulk"`.
 
 ### To use
 
-To enqueue an array of single elements:
+To enqueue a job for each element of an array:
 
 ```ruby
-FooJob.push_bulk([1, 2, 3]) # enqueues 3 jobs for FooJob, each with 1 argument
+# enqueues 3 jobs for FooJob, each with 1 argument
+FooJob.push_bulk([1, 2, 3])
+
+# equivalent to:
+Sidekiq::Client.push_bulk("class" => FooJob, "args" => [[1], [2], [3]])
+
+# which is a more efficient version of
+[1, 2, 3].each do |i|
+  FooJob.perform_async(i)
+end
 ```
 
 To enqueue jobs with more than one argument:
