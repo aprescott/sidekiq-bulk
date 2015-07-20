@@ -11,7 +11,7 @@ Sidekiq comes with `Sidekiq::Client.push_bulk` which can be faster than `perform
 This gem provides a wrapper around `Sidekiq::Client.push_bulk` so that instead of
 
 ```ruby
-Sidekiq::Client.push_bulk("class" => FooJob, "args" => [[1], [2], [3])
+Sidekiq::Client.push_bulk("class" => FooJob, "args" => [[1], [2], [3]])
 ```
 
 You can write
