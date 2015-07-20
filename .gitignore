@@ -1,0 +1,6 @@
+/Gemfile.lock
+/*.gem
+/gemfiles/*.gemfile.lock
+/.bundle
+/vendor/cache
+/spec/examples.txt
