@@ -1,6 +1,6 @@
 # sidekiq-bulk
 
-[![Build Status](https://travis-ci.org/aprescott/sidekiq-bulk.svg?branch=master)](https://travis-ci.org/aprescott/sidekiq-bulk)
+[![Build Status](https://travis-ci.org/aprescott/sidekiq-bulk.svg?branch=master)](https://travis-ci.org/aprescott/sidekiq-bulk) [![Code Climate](https://codeclimate.com/github/aprescott/sidekiq-bulk/badges/gpa.svg)](https://codeclimate.com/github/aprescott/sidekiq-bulk)
 
 Give your workers more to do!
 
