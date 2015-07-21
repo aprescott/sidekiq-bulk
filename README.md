@@ -67,6 +67,39 @@ all_users.each do |user|
 end
 ```
 
+## Job count splitting
+
+`push_bulk` will only enqueue at most 10,000 jobs at a time. That is, if `items` has 20,000 elements, `push_bulk(items)` will push the first 10,000, then the second 20,000. You can control the threshold with `limit:`.
+
+```ruby
+# push in groups of 50,000 jobs at a time
+FooJob.push_bulk(items, limit: 50_000)
+
+# equivalent to FooJob.push_bulk(items, limit: 10_000)
+FooJob.push_bulk(items)
+```
+
+This also works with a block.
+
+```ruby
+# this results in 5 pushes
+
+users.length # => 100_000
+FooJob.push_bulk(users, limit: 20_000) do |user|
+  [user.id, "some-value"]
+end
+```
+
+And to disable push splitting, use `push_bulk!`.
+
+```ruby
+# one single push of 500,000 jobs, no splitting
+
+FooJob.push_bulk!(users) do |user|
+  [user.id, "some-value"]
+end
+```
+
 ### License
 
 Copyright (c) 2015 Adam Prescott, licensed under the MIT license. See LICENSE.
