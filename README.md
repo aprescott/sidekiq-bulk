@@ -95,6 +95,7 @@ And to disable push splitting, use `push_bulk!`.
 ```ruby
 # one single push of 500,000 jobs, no splitting
 
+users.length # => 500_000
 FooJob.push_bulk!(users) do |user|
   [user.id, "some-value"]
 end
