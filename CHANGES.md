@@ -1,6 +1,6 @@
 # HEAD
 
-* ...
+* Remove a `require` ordering dependency. (#2)
 
 # v0.1
 

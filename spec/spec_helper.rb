@@ -1,4 +1,3 @@
-require "sidekiq"
 require "sidekiq/bulk"
 require "sidekiq/testing"
 require "rspec"
