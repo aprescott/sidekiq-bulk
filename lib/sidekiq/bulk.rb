@@ -1,3 +1,4 @@
+require "sidekiq"
 require "active_support/core_ext/array/grouping"
 
 module SidekiqBulk
