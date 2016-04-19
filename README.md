@@ -4,23 +4,33 @@
 
 Give your workers more to do!
 
-Augments Sidekiq job classes with a `push_bulk` method for easier bulk pushing.
+Augments Sidekiq job classes with a `push_bulk` method for easier and faster bulk pushing.
 
-Sidekiq comes with `Sidekiq::Client.push_bulk` which can be faster than `perform_async` if you have lots and lots of jobs to enqueue.
+Let's say you want to enqueue a bunch of jobs. You might do this:
 
-This gem provides a wrapper around `Sidekiq::Client.push_bulk` so that instead of
+```ruby
+big_array.each do |e|
+  FooJob.perform_async(e)
+end
+```
+
+If `big_array` has lots of elements, this can be quite slow because of repeated Redis calls per job.
+
+If, instead, you can push all of `big_array` to Redis in one go, it's more efficient.
+
+Sidekiq comes with `Sidekiq::Client.push_bulk` which does let you push in bulk. This gem provides a wrapper around that method so that instead of:
 
 ```ruby
 Sidekiq::Client.push_bulk("class" => FooJob, "args" => [[1], [2], [3]])
 ```
 
-You can write
+You can write:
 
 ```ruby
 FooJob.push_bulk([1, 2, 3])
 ```
 
-More stuff is supported!
+By default, jobs are sent in batches of 10,000 as a trade-off. Pushing N jobs is not O(1).
 
 ### Installing
 
