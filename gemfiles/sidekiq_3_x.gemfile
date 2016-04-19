@@ -2,6 +2,6 @@
 
 source "https://rubygems.org/"
 
-gemspec :path => "../"
-
 gem "sidekiq", "~> 3.0"
+
+gemspec :path => "../"

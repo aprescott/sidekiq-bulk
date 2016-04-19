@@ -5,10 +5,12 @@ rvm:
   - 2.0.0
   - 2.1
   - 2.2
+  - 2.3.0
   - ruby-head
 gemfile:
   - gemfiles/sidekiq_2_x.gemfile
   - gemfiles/sidekiq_3_x.gemfile
+  - gemfiles/sidekiq_4_x.gemfile
   - gemfiles/sidekiq_edge.gemfile
 script:
   - bundle exec rspec
