@@ -1,9 +1,8 @@
 require "sidekiq"
-require "active_support/core_ext/array/grouping"
 
 module SidekiqBulk
   def push_bulk(items, limit: 10_000, &block)
-    items.in_groups_of(limit, false).each do |group|
+    items.each_slice(limit).each do |group|
       push_bulk!(group, &block)
     end
   end
