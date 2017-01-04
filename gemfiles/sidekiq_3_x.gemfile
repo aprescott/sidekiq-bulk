@@ -5,6 +5,5 @@ gemspec :path => "../"
 gem "sidekiq", "~> 3.0"
 
 if RUBY_VERSION < "2.2.2"
-  gem "activesupport", "~> 4.2.7.1"
   gem "rack", "~> 1.6.5"
 end

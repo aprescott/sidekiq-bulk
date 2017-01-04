@@ -1,6 +1,7 @@
 # HEAD
 
-* ...
+* Remove activesupport dependency
+    *Tero Tasanen*
 
 # v0.1.1
 

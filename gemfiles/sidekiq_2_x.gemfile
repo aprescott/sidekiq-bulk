@@ -3,7 +3,3 @@ source "https://rubygems.org/"
 gemspec :path => "../"
 
 gem "sidekiq", "~> 2.0"
-
-if RUBY_VERSION < "2.2.2"
-  gem "activesupport", "~> 4.2.7.1"
-end
