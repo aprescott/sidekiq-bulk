@@ -19,9 +19,9 @@ RSpec.describe SidekiqBulk do
       FooJob.public_send(method_name, [1, 2, 3]) { |el| [2*el, "some-value"] }
 
       expect(FooJob.jobs.length).to eq(3)
-      expect(FooJob).to have_enqueued_job(2, "some-value")
-      expect(FooJob).to have_enqueued_job(4, "some-value")
-      expect(FooJob).to have_enqueued_job(6, "some-value")
+      expect(FooJob).to have_enqueued_sidekiq_job(2, "some-value")
+      expect(FooJob).to have_enqueued_sidekiq_job(4, "some-value")
+      expect(FooJob).to have_enqueued_sidekiq_job(6, "some-value")
     end
 
     it "goes through the Sidekiq::Client interface" do
@@ -40,9 +40,9 @@ RSpec.describe SidekiqBulk do
       FooJob.public_send(method_name, [10, -6.1, "a thing"])
 
       expect(FooJob.jobs.length).to eq(3)
-      expect(FooJob).to have_enqueued_job(10)
-      expect(FooJob).to have_enqueued_job(-6.1)
-      expect(FooJob).to have_enqueued_job("a thing")
+      expect(FooJob).to have_enqueued_sidekiq_job(10)
+      expect(FooJob).to have_enqueued_sidekiq_job(-6.1)
+      expect(FooJob).to have_enqueued_sidekiq_job("a thing")
     end
   end
 
@@ -53,13 +53,13 @@ RSpec.describe SidekiqBulk do
       FooJob.push_bulk([1, 2, 3, 4, 5, 6, 7], limit: 3)
 
       expect(FooJob.jobs.length).to eq(7)
-      expect(FooJob).to have_enqueued_job(1)
-      expect(FooJob).to have_enqueued_job(2)
-      expect(FooJob).to have_enqueued_job(3)
-      expect(FooJob).to have_enqueued_job(4)
-      expect(FooJob).to have_enqueued_job(5)
-      expect(FooJob).to have_enqueued_job(6)
-      expect(FooJob).to have_enqueued_job(7)
+      expect(FooJob).to have_enqueued_sidekiq_job(1)
+      expect(FooJob).to have_enqueued_sidekiq_job(2)
+      expect(FooJob).to have_enqueued_sidekiq_job(3)
+      expect(FooJob).to have_enqueued_sidekiq_job(4)
+      expect(FooJob).to have_enqueued_sidekiq_job(5)
+      expect(FooJob).to have_enqueued_sidekiq_job(6)
+      expect(FooJob).to have_enqueued_sidekiq_job(7)
     end
 
     it "limits with the item transformation" do
