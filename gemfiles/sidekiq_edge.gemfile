@@ -9,7 +9,3 @@ end
 gemspec :path => "../"
 
 gem "sidekiq", :github => "mperham/sidekiq"
-
-if RUBY_VERSION < "2.2.2"
-  gem "rack", "~> 1.6.5"
-end
