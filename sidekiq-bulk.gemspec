@@ -16,5 +16,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rspec", ">= 3.3")
   s.add_development_dependency("rspec-sidekiq", ">= 3.0.2")
   s.add_development_dependency("pry-byebug")
+  # byebug is locked while ruby < 2.2.0 is still tested
+  s.add_development_dependency("byebug", "~> 9.0.6")
   s.add_development_dependency("appraisal")
 end
