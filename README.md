@@ -79,7 +79,7 @@ end
 
 ## Job count splitting
 
-`push_bulk` will only enqueue at most 10,000 jobs at a time. That is, if `items` has 20,000 elements, `push_bulk(items)` will push the first 10,000, then the second 20,000. You can control the threshold with `limit:`.
+`push_bulk` will only enqueue at most 10,000 jobs at a time. That is, if `items` has 20,000 elements, `push_bulk(items)` will push the first 10,000, then the second 10,000. You can control the threshold with `limit:`.
 
 ```ruby
 # push in groups of 50,000 jobs at a time
