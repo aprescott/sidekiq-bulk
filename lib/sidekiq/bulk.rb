@@ -2,9 +2,11 @@ require "sidekiq"
 
 module SidekiqBulk
   def push_bulk(items, limit: 10_000, &block)
-    items.each_slice(limit).each do |group|
+    job_ids = items.each_slice(limit).map do |group|
       push_bulk!(group, &block)
     end
+
+    job_ids.flatten
   end
 
   def push_bulk!(items, &block)
