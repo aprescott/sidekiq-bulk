@@ -1,7 +1,7 @@
 # HEAD
 
-* Remove activesupport dependency
-    *Tero Tasanen*
+* `push_bulk` now returns the job IDs for pushed jobs. (#7)
+* Remove activesupport dependency (#4)
 
 # v0.1.1
 
