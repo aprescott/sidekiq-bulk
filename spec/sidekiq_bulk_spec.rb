@@ -44,6 +44,14 @@ RSpec.describe SidekiqBulk do
       expect(FooJob).to have_enqueued_sidekiq_job(-6.1)
       expect(FooJob).to have_enqueued_sidekiq_job("a thing")
     end
+
+    it "returns the enqueued job ids" do
+      allow(Sidekiq::Client).to receive(:push_bulk).and_return(["jid-1", "jid-2", "jid-3"])
+
+      job_ids = FooJob.public_send(method_name, [1, 2, 3])
+
+      expect(job_ids).to match_array(["jid-1", "jid-2", "jid-3"])
+    end
   end
 
   describe "#push_bulk" do
